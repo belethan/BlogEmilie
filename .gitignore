@@ -1,1 +1,4 @@
 config/config.php
+.idea
+.gitignore
+*.zip

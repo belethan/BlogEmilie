@@ -1,25 +1,45 @@
-## Blog d'Emilie Forteroche
+# Refactoring Blog Emilie
+## Blog d'Emilie Forteroche 
 
-## Pour utiliser ce projet : 
 
-- Commencer par cloner le projet. 
-- installez le projet chez vous, dans un dossier exécuté par un serveur local (type MAMP, WAMP, LAMP, etc...)
-- Une fois installé chez vous, créez un base de données vide appelée : "blog_forteroche"
-- Importez le fichier _blog_forteroche.sql_ dans votre base de données.
+## Pour utiliser ce projet :
 
-## Lancez le projet ! 
+- Commencer par décompresser le fichier.
+- Une fois Décompressé, créez un base de données vide appelée : "blog_forteroche" avec le user root password root
+    - Importez le fichier _blog_forteroche.sql_ dans votre base de données.
+    - commande :
+ ```  
+  mysql -u root -p blog_forteroche < blog_forteroche.sql
+  ```
+## Lancez le projet !
 
-Pour la configuration du projet renomez le fichier _\_config.php_ (dans le dossier _config_) en _config.php_ et éditez le si nécessaire. 
-Ce fichier contient notamment les informations de connextion à la base de données. 
+> Pour vous connecter en mode **admin**, il faut cliquer sur le lien en bas de page.
+>Un formulaire de connexion apparaît, le login est "Emilie" et le mot de passe est "password" (attention aux majuscules)
 
-Pour vous connecter en partie admin, le login est "Emilie" et le mot de passe est "password" (attention aux majuscules)
 
-## Problèmes courants :
+## Modifications et Explications
 
-Il est possible que la librairie intl ne soit pas activée sur votre serveur par défaut. Cette librairie sert notamment à traduire les dates en francais. Dans ce cas, vous pouvez soit utiliser l'interface de votre serveur local pour activer l'extention (wamp), soit aller modifier directement le fichier _php.ini_. 
+Suite à un problème de manipulation de git et GitHub, j'ai perdu le fork et je n'ai plus historique des modications.
+Mon repository représente la version final du projet. Je vais donc détailler les différentes des changements que j'ai effectué.
 
-Ce projet a été réalisé avec PHP 8.2. Bien que d'autres versions de PHP puissent fonctionner, il n'est pas garanti que le projet fonctionne avec des versions antérieures.
+1. Gestion du menu principal et ajout du sous lorsque la personne est connectée.
+2. Mise à jour de la base de données pour ajout champ nbvues(int) .cela compte le nombre de vues d'un article
+3. Mise à jour controleur et modéle. Ajout propriété **qteCommentaires**
+4. Modification controler Article, Ajout requete pour calculer le nombre de commentaire et de vues
+5. Gestion affichage des articles avec tri sur chaque colonne (Colonnes en plus cumuls).
+    1. mise en place du framework bootstrap et fonction JS (DataTable)
+    2. Il n'y aucune commande de traitements de l'information, simplement de la mise en forme graphique
+    3. afin d'optimiser au mieux le site, le chargement et la mise des données se fait par des requêtes AJAX.
+    4. Chaque action de tri ou suppression, sont faites par des commandes PHP.
+6. Mise en place des liens vers les commentaires associés aux articles.
+7. Affichages des commentaires associés à un article sous forme de tableau avec tri sur chaque colonne.
+8. Mise en place Fiche modale (Bootstrap) pour confirmation de suppression pour les commentaires.
+9. Modification de la confirmation sur la suppression des articles (homogénéité)
+10. Finalisation du projet avec des tests associés.
 
-## Copyright : 
+
+## Copyright :
 
 Projet utilisé dans le cadre d'une formation Openclassrooms. 
+
+            
