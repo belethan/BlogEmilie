@@ -36,6 +36,40 @@ Mon repository représente la version final du projet. Je vais donc détailler l
 10. Finalisation du projet avec des tests associés.
 
 
+## Gestion GitHub
+Le fait de faire un fork du projet , on doit attendre la validation du proprietaire pour committer les modifications.
+En outre, si le propriétaire fait évoluer la branche principal, il va falloir maintenir la synchronisation.
+
+La création d'une nouvelle sur le depôt du propriétaire par un clonage permettra simplement de faire une mise à jour simple.
+On fait les commandes suivantes : 
+ - on récupére URL sur le dépôt original qui est en lecture seul (pas commit possible)
+ - on crée un nouvelle branche appelé **UPSTREAM**
+```` - 
+git remote add upstream https://github.com/OpenClassrooms-Student-Center/PHP-blog-emilie-forteroche.git
+````
+- on vérifie le remote a été ajouté
+```
+git remote -v
+
+origin	git@github.com:belethan/BlogEmilie.git (fetch)
+origin	git@github.com:belethan/BlogEmilie.git (push)
+upstream	git@github.com:OpenClassrooms-Student-Center/PHP-blog-emilie-forteroche.git (fetch)
+upstream	git@github.com:OpenClassrooms-Student-Center/PHP-blog-emilie-forteroche.git (push)
+
+je vérifie mes branches
+git branch -a
+
+on constate qu'il n'y pas de branche sur upstream 
+
+je me positionne sur la branche main et je fais un fetch pour récupérer la branche.
+git fetch upstream 
+```
+A partir on peut récupérer les modifications sur la branche main que l'on appelle **fastforward** en faisant
+une commande merge tout simplement .
+
+```
+
+```
 ## Copyright : 
 
 Projet utilisé dans le cadre d'une formation Openclassrooms. 

@@ -109,11 +109,11 @@
      * Setter pour la date de mise à jour. Si la date est une string, on la convertit en DateTime.
      * @param string|DateTime $dateUpdate
      * @param string $format : le format pour la convertion de la date si elle est une string.
-     * Par défaut, c'est le format de date mysql qui est utilisé.
+     * Par défaut, c'est le format de date mysql qui est utilisé. string|DateTime
      */
-    public function setDateUpdate( string|DateTime $dateUpdate=null, string $format = 'Y-m-d H:i:s') : void
+    public function setDateUpdate($dateUpdate, string $format = 'Y-m-d H:i:s') : void
     {
-        $this->date_Update = Null;
+        $this->date_Update = null;
         if (isset($dateUpdate)) {
             if (is_string($dateUpdate)) {
                 $dateUpdate = DateTime::createFromFormat($format, $dateUpdate);
