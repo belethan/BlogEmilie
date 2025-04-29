@@ -56,19 +56,22 @@ class CommentController
         $draw = Utils::request("draw", 1 );
         $order = Utils::request('order',null);
         /* Référencement des colonnes d'un tableau */
-        $columns = ['A.id', 'A.date_creation','A.pseudo', 'A.content','title','A.id_article'];
+        $columns = ['id', 'datecreation','pseudo', 'content','title','id_article'];
         $tridatable = "";
         /* extraction pour le tri sur la colonne choisit */
         if (!empty($order[0]['column'])) {
             $orderColumnIndex = $order[0]['column'];
-            $orderDir = $order[0]['dir'];
+            $orderDir =strtoupper($order[0]['dir'])==="ASC" ? SORT_ASC : SORT_DESC;
+
             $orderColumn = $columns[$orderColumnIndex] ?? "";
-            $tridatable = " ORDER BY $orderColumn $orderDir";
+            //$tridatable = " ORDER BY $orderColumn $orderDir";
         }
         /* Requete affichage des donnés */
         $CommentManager = new CommentManager();
         $total = $CommentManager->getCountAllComment();
-        $data = $CommentManager->ListCommentTable($id,$tridatable);
+        //$data = $CommentManager->ListCommentTable($id,$tridatable);
+        $data = $CommentManager->ListCommentTable($id,$orderColumn,$orderDir);
+
         // Format JSON attendu par DataTables
         $response = [
             "draw" => intval($draw),
